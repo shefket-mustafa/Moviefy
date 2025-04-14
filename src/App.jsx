@@ -1,3 +1,4 @@
+import { Routes } from "react-router"
 
 
 function App() {
@@ -5,6 +6,10 @@ function App() {
 
   return (
     <>
+    <Routes>
+
+
+    </Routes>
       
        
     </>
