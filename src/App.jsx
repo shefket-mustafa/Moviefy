@@ -1,3 +1,4 @@
+
 import { Route, Routes } from "react-router"
 import Home from "./components/home/Home"
 import Movies from "./components/movies/Movies"
@@ -12,10 +13,10 @@ function App() {
     <>
     <Routes>
 
-    <Route to={'/'} element={<Home/>}/>
-    <Route to={'/movies'} element={<Movies/>}/>
-    <Route to={'/contact'} element={<Contact/>}/>
-    <Route to={'/about'} element={<About/>}/>
+    <Route path='/' element={<Home/>}/>
+    <Route path='/movies' element={<Movies/>}/>
+    <Route path='/contact' element={<Contact/>}/>
+    <Route path='/about' element={<About/>}/>
 
     </Routes>
       
