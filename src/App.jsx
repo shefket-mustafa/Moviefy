@@ -4,6 +4,7 @@ import Home from "./components/home/Home"
 import Movies from "./components/movies/Movies"
 import Contact from "./components/contact/Contact"
 import About from "./components/about/About"
+import Header from "./components/header/Header"
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
 
   return (
     <>
+      <Header />
     <Routes>
 
     <Route path='/' element={<Home/>}/>
