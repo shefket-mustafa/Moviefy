@@ -5,6 +5,7 @@ import Movies from "./components/movies/Movies"
 import Contact from "./components/contact/Contact"
 import About from "./components/about/About"
 import Header from "./components/header/Header"
+import Footer from "./components/footer/Footer"
 
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
     <Route path='/about' element={<About/>}/>
 
     </Routes>
+    <Footer/>
+
       
        
     </>
