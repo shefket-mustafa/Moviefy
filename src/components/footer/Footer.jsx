@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faLinkedin, faGithub, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
     import { Link } from 'react-router';
     import './footer.css';
 
