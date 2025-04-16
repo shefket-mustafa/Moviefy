@@ -1,6 +1,6 @@
 .home-page-container{
     background-color: rgb(36, 35, 35);
-    min-height: 93vh;
+    min-height: 70vh;
     color:white;
     display: flex;
     justify-content: center;
@@ -9,7 +9,7 @@
 
 .sub-container{
     display: flex;
-    min-width: 1300px;
+    max-width: 1300px;
     background-color: rgb(61, 57, 57);
     border-radius: 25px;
     background: linear-gradient(to right, rgb(61, 57, 57) 70%, rgba(61, 57, 57, 0) 100%);
@@ -36,7 +36,7 @@
 
 .welcoming-image{
     position: relative;
-    width: 700px; /* or whatever size you want */
+    width: 700px; 
     height: 400px;
     display: flex;
     justify-content: center;
@@ -71,3 +71,80 @@
     z-index: 1; 
     position: relative;
   }
+
+  .secondary-container-left{
+    max-width:700px;
+    background-color: rgb(61, 57, 57);
+    line-height: 25px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .secondary-container-left li{
+    color: white;
+  }
+
+  .sec-con-icons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+  }
+  .sec-con-icons img{
+    width: 20px;
+    padding: 5px 20px;
+    border-radius: 15px;
+    border: none;
+    background-color: rgb(0, 115, 128);
+  }
+  
+
+  .lower-home{
+    background-color: rgb(61, 57, 57);
+    display: flex;
+  }
+
+  .secondary-container-right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+  }
+  .secondary-container-right p{
+    color:rgb(0, 115, 128);
+  }
+
+  .topics{
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    background-color: rgb(34, 33, 33);
+    border-radius: 15px;
+    margin-top: 15px;
+  }
+
+  .topics img{
+    width: 150px;
+    height: auto;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    object-fit: fill;
+    
+  }
+  .topics-text {
+    display: flex;
+    flex-direction: column;  
+    gap: 5px;
+    width: 100%;
+    align-items: flex-start;
+    padding-top: 15px;
+    padding-left: 20px;
+    
+    
+  }
+ 
+  
