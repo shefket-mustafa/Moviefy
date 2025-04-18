@@ -1,7 +1,19 @@
 import { Link } from 'react-router';
 import './movies.css'
+import { useEffect, useState } from 'react';
+import { useGetMovies } from '../../api/requests';
 
 export default function Movies() {
+
+    const {getPopularMovies} = useGetMovies();
+    const [movies, setMovies] = useState([]);
+
+    useEffect(() =>{
+      getPopularMovies()
+      .then(data => {
+        console.log(data.results);
+      })
+    },[getPopularMovies]);
   return (
     <div className='movies-container'>
 
