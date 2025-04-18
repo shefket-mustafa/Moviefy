@@ -8,7 +8,7 @@ export default function Header() {
       <div className='header'>
 
         <div className='icon'><img src={icon} alt="Loading.." />
-            <p className='header-text'>Moviegram</p>
+            <p className='header-text'>Moviefy</p>
         </div>
 
         <div className='nav'>

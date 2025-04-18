@@ -9,8 +9,7 @@ export default function Home() {
         <div className="sub-container">
           <div className="home-page-welcoming">
             <p>
-              Welcome to <strong>Moviegram</strong> — your gateway to the world
-              of movies. <br />
+              Welcome to <strong>Moviefy</strong> — Your movie universe, simplified. <br />
               Discover trending films, search by title, and explore <br />{" "}
               cinematic gems from around the globe.
             </p>
@@ -30,7 +29,7 @@ export default function Home() {
       <div className="secondary-container-left">
       <div className="sec-con-icons">
 
-        <p style={{color:'rgb(0, 115, 128)'}}>Share Moviegram with<br/>
+        <p style={{color:'rgb(0, 115, 128)'}}>Share Moviefy with<br/>
          your friends</p>
          
          <a href="https://telegram.org" target="_blank" rel="noreferrer">
@@ -67,19 +66,19 @@ export default function Home() {
       </div>
 
         <p>
-          Moviegram is a free movie streaming platform where you can 
+          Moviefy is a free movie streaming platform where you can 
           <strong>watch and download movies</strong> in ultra HD — without
           registration, fees, or annoying popups. With just one non-intrusive ad
           to help us cover server costs, we focus on offering a clean and
           enjoyable space for all movie lovers.
         </p>
 
-        <h3 style={{color:'black'}}>🎬 Why Choose Moviegram?</h3>
+        <h3 style={{color:'black'}}>🎬 Why Choose Moviefy?</h3>
         <ul>
           <li>
             <strong style={{color:'black'}}>Safe Streaming:</strong> We only use one carefully-monitored
             ad source and constantly scan for anything suspicious to keep
-            Moviegram safe for everyone.
+            Moviefy safe for everyone.
           </li>
           <li>
             <strong style={{color:'black'}}>Massive Movie Library:</strong> From blockbusters to indie
@@ -89,7 +88,7 @@ export default function Home() {
           </li>
           <li>
             <strong style={{color:'black'}}>HD Quality, Your Way:</strong> Whether you're on a slow
-            connection or lightning-fast Wi-Fi, Moviegram lets you stream in
+            connection or lightning-fast Wi-Fi, Moviefy lets you stream in
             resolutions from 360p to 1080p. Choose what works for you.
           </li>
           <li>
@@ -103,13 +102,13 @@ export default function Home() {
             fresh movies to enjoy.
           </li>
           <li>
-            <strong style={{color:'black'}}>Simple Interface:</strong> Moviegram's clean design is easy
+            <strong style={{color:'black'}}>Simple Interface:</strong> Moviefy's clean design is easy
             to navigate whether you're tech-savvy or brand new to online
             streaming. Search, browse, and discover in seconds.
           </li>
           <li>
             <strong style={{color:'black'}}>Works Everywhere:</strong> Whether you're on your desktop or
-            phone, Moviegram is optimized to deliver a great experience on any
+            phone, Moviefy is optimized to deliver a great experience on any
             screen.
           </li>
           <li>
@@ -121,12 +120,12 @@ export default function Home() {
 
         <p>
           If you're looking for a reliable, free, and fan-friendly movie site —
-          give Moviegram a try. And if you love what we do, don't forget to
+          give Moviefy a try. And if you love what we do, don't forget to
           bookmark us and share the word with your friends!
         </p>
 
         <p>
-          <strong>Thanks for being part of the Moviegram family!</strong>
+          <strong>Thanks for being part of the Moviefy family!</strong>
         </p>
       </div>
       <div className="secondary-container-right">
