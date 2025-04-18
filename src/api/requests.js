@@ -18,9 +18,11 @@
 
 //https://api.themoviedb.org/3/movie/155?api_key=YOUR_API_KEY search by id 
 
+//GET https://api.themoviedb.org/3/movie/top_rated top rated movies 
+
 const baseUrl = 'https://api.themoviedb.org/3/movie/'
 
-const useGetMovies = () => {
+export const useGetMovies = () => {
 
     const getPopularMovies = async () => {
 
@@ -28,7 +30,7 @@ const useGetMovies = () => {
             const response = await fetch(baseUrl + `popular?api_key=b4a2347f7dacd3d039a3465b4a2ccc4a`);
 
             if(!response.ok){
-                throw new Error('Failed to fetch popular movies');
+                throw new Error('Failed to fetch movies');
             }
             const data = await response.json();
             return data;
@@ -41,5 +43,28 @@ const useGetMovies = () => {
     return {getPopularMovies}
 };
 
-export {useGetMovies};
+
+
+export const useGetWeeklyMovies = () => {
+
+    const getWeeklyMovies = async () => {
+
+        try{
+            const response = await fetch(baseUrl + `top_rated?api_key=b4a2347f7dacd3d039a3465b4a2ccc4a`);
+
+            if(!response.ok){
+                throw new Error('Failed to fetch popular movies');
+            }
+
+            const data = await response.json();
+            return data;
+
+        }catch(err){
+            console.log(err.message);
+            return[]
+        }
+    }
+
+    return {getWeeklyMovies}
+}
 
