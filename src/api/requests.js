@@ -20,6 +20,10 @@
 
 //GET https://api.themoviedb.org/3/movie/top_rated top rated movies 
 
+//https://image.tmdb.org/t/p/w500${poster_path} to use posters
+
+//GET /genre/movie/list genre list
+
 const baseUrl = 'https://api.themoviedb.org/3/movie/'
 
 export const useGetMovies = () => {
