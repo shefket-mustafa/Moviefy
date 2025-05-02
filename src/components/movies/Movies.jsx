@@ -8,11 +8,24 @@ export default function Movies() {
 
     const {getPopularMovies} = useGetMovies();
     const {getWeeklyMovies} = useGetWeeklyMovies()
+
     const [movies, setMovies] = useState({
       popularMovies: [],
       weeklyMovies: []
     });
+    const [pageIndex, setPageIndex] = useState(0);
+    const [visibleMovies, setVisibleMovies] = useState([]);
+
+    const totalMovies = movies.popularMovies.results?.length || 0;
+    const totalPages = Math.ceil(totalMovies / 5);
     
+    useEffect(() => {
+      if (movies.popularMovies.results) {
+        setVisibleMovies(
+          movies.popularMovies.results.slice(pageIndex * 5, pageIndex * 5 + 5)
+        );
+      }
+    }, [movies.popularMovies.results, pageIndex]);
 
     useEffect(() =>{
       getPopularMovies()
@@ -22,9 +35,10 @@ export default function Movies() {
             ...previous,
             popularMovies: popularMoviesData
           }
-        })
+        });
+
       })
-    },[getPopularMovies]);
+    },[]);
 
     useEffect(() => {
       getWeeklyMovies()
@@ -36,20 +50,29 @@ export default function Movies() {
           }
         })
       })
-    },[getWeeklyMovies])
+    },[])
 
   return (
     <div className='movies-container'>
      <div className='top-container'>
-      <p className='top-text'>🔥 This Week's Most Popular Movies</p>
+      
+     <div className='top-bar'>
+  <button className='pagination-btn' disabled={pageIndex === 0} onClick={() => setPageIndex(i => Math.max(i - 1, 0))}>
+    ◀
+  </button>
+
+  <p className='top-text'>🔥 This Week's Most Popular Movies</p>
+
+  <button className='pagination-btn' disabled={pageIndex >= totalPages - 1} onClick={() => setPageIndex(i => i + 1)}>
+    ▶
+  </button>
+</div>
      
      <div className='week-5'>
 
-      {movies.popularMovies.results?.slice(0,5).map(movie => <Top5Movie key={movie.id} movieData={movie}/>)}
-    
-
-
-     </div>
+      {visibleMovies.map(movie => <Top5Movie key={movie.id} movieData={movie}/>)}
+  
+      </div>
 
      </div>
     </div>
