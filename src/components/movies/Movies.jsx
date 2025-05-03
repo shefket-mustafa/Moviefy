@@ -54,7 +54,22 @@ export default function Movies() {
 
   return (
     <div className='movies-container'>
-     <div className='top-container'>
+      <div className='top-container'>
+        <div style={{
+    backgroundImage: `url(https://image.tmdb.org/t/p/original${visibleMovies[0]?.backdrop_path})`}} className='top-banner'>
+
+        <div className='top-text'>
+        <h1>{visibleMovies[0].title}</h1>
+        <p>{visibleMovies[0].overview}</p>
+        </div>
+
+        <div className='top-btns'>
+          <button>Play</button>
+          <button>Details</button>
+        </div>
+        </div>
+      </div>
+     <div className='middle-container'>
       
      <div className='top-bar'>
   <button className='pagination-btn' disabled={pageIndex === 0} onClick={() => setPageIndex(i => Math.max(i - 1, 0))}>
