@@ -1,20 +1,23 @@
-import { Link } from 'react-router';
 import './movies.css'
 import { useEffect, useState } from 'react';
-import { useGetMovies, useGetWeeklyMovies } from '../../api/requests';
+import { useGetMovies, useTopRatedMovies } from '../../api/requests';
 import Top5Movie from '../top-5-movies/Top5Movie';
 
 export default function Movies() {
 
     const {getPopularMovies} = useGetMovies();
-    const {getWeeklyMovies} = useGetWeeklyMovies()
+    const {getTopRatedMovies} = useTopRatedMovies()
 
     const [movies, setMovies] = useState({
       popularMovies: [],
-      weeklyMovies: []
+      topRatedMovies: []
     });
-    const [pageIndex, setPageIndex] = useState(0);
-    const [visibleMovies, setVisibleMovies] = useState([]);
+    const [pageIndexPopular, setPageIndexPopular] = useState(0);
+    const [pageIndexTopRated, setPageIndexTopRated] = useState(0);
+    const [visibleMovies, setVisibleMovies] = useState({
+      visiblePopularMovies: [],
+      visibleTopRatedMovies: []
+    });
     const [index, setIndex] = useState(0);
 
     const totalMovies = movies.popularMovies.results?.length || 0;
@@ -22,11 +25,25 @@ export default function Movies() {
     
     useEffect(() => {
       if (movies.popularMovies.results) {
-        setVisibleMovies(
-          movies.popularMovies.results.slice(pageIndex * 5, pageIndex * 5 + 5)
+        const visiblePopular = movies.popularMovies.results.slice(pageIndexPopular * 5, pageIndexPopular * 5 + 5);
+        setVisibleMovies( prev => ({
+          ...prev,
+          visiblePopularMovies: visiblePopular
+        })
         );
       }
-    }, [movies.popularMovies.results, pageIndex]);
+    }, [movies.popularMovies.results, pageIndexPopular]);
+
+
+    useEffect(() => {
+      if(movies.topRatedMovies.results) {
+        const visibleTopRated = movies.topRatedMovies.results.slice(pageIndexTopRated * 5, pageIndexTopRated * 5 +5);
+        setVisibleMovies( prev => ({
+          ...prev,
+          visibleTopRatedMovies: visibleTopRated
+        }))
+      }
+    },[movies.topRatedMovies.results, pageIndexTopRated])
 
     useEffect(() =>{
       getPopularMovies()
@@ -37,17 +54,16 @@ export default function Movies() {
             popularMovies: popularMoviesData
           }
         });
-
       })
     },[]);
 
     useEffect(() => {
-      getWeeklyMovies()
-      .then(weeklyMoviesData => {
+      getTopRatedMovies()
+      .then(topRatedMovies => {
         setMovies(previous => {
           return {
             ...previous,
-            weeklyMovies: weeklyMoviesData
+            topRatedMovies: topRatedMovies
           }
         })
       })
@@ -84,27 +100,53 @@ export default function Movies() {
         </div>
         </div>
       </div>
-     <div className='middle-container'>
+     <div className='this-weeks-container'>
       
      <div className='top-bar'>
-  <button className='pagination-btn' disabled={pageIndex === 0} onClick={() => setPageIndex(i => Math.max(i - 1, 0))}>
+  <button className='pagination-btn' disabled={pageIndexPopular === 0} onClick={() => setPageIndexPopular(i => Math.max(i - 1, 0))}>
     ◀
   </button>
 
   <p className='top-text'>🔥 This Week's Most Popular Movies</p>
 
-  <button className='pagination-btn' disabled={pageIndex >= totalPages - 1} onClick={() => setPageIndex(i => i + 1)}>
+  <button className='pagination-btn' disabled={pageIndexPopular >= totalPages - 1} onClick={() => setPageIndexPopular(i => i + 1)}>
     ▶
   </button>
 </div>
      
-     <div className='week-5'>
+  <div className={`week-5 ${pageIndexPopular}-page fade-in`}>
 
-      {visibleMovies.map(movie => <Top5Movie key={movie.id} movieData={movie}/>)}
-  
+      {visibleMovies.visiblePopularMovies.map(movie => <Top5Movie key={movie.id} movieData={movie}/>)}
+      
+
       </div>
 
      </div>
+
+     <div className='top-rated-container'>
+      
+     <div className='top-bar'>
+  <button className='pagination-btn' disabled={pageIndexTopRated === 0} onClick={() => setPageIndexTopRated(i => Math.max(i - 1, 0))}>
+    ◀
+  </button>
+
+  <p className='top-text'>🔥 This Week's Top Rated Movies</p>
+
+  <button className='pagination-btn' disabled={pageIndexTopRated >= totalPages - 1} onClick={() => setPageIndexTopRated(i => i + 1)}>
+    ▶
+  </button>
+</div>
+     
+  <div className={`week-5 ${pageIndexTopRated}-page fade-in`}>
+
+      {visibleMovies.visibleTopRatedMovies.map(movie => <Top5Movie key={movie.id} movieData={movie}/>)}
+      
+
+      </div>
+
+     </div>
+
+     
     </div>
     );
 }
