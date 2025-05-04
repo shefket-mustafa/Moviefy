@@ -1,27 +1,23 @@
 import './movies.css'
 import { useEffect, useState } from 'react';
-import { useGetMovies, useTopRatedMovies, useUpcomingMovies } from '../../api/requests';
 import Top5Movie from '../top-5-movies/Top5Movie';
+import { useMovieContext } from '../util-hooks/useMovieContext';
 
 export default function Movies() {
 
-    const {getPopularMovies} = useGetMovies();
-    const {getTopRatedMovies} = useTopRatedMovies()
-    const {getUpcomingMovies} = useUpcomingMovies();
-
-    const [movies, setMovies] = useState({
-      popularMovies: [],
-      topRatedMovies: [],
-      upcomingMovies: []
-    });
-    const [pageIndexPopular, setPageIndexPopular] = useState(0);
-    const [pageIndexTopRated, setPageIndexTopRated] = useState(0);
-    const [pageUpcomingIndex, setPageUpcomingIndex] = useState(0);
-    const [visibleMovies, setVisibleMovies] = useState({
-      visiblePopularMovies: [],
-      visibleTopRatedMovies: [],
-      visibleUpcomingMovies: []
-    });
+  const {
+      movies,
+      setMovies,
+      pageIndexPopular,
+      pageIndexTopRated,
+      pageUpcomingIndex,
+      setPageIndexPopular,
+      setPageIndexTopRated,
+      setPageUpcomingIndex,
+      visibleMovies
+    } = useMovieContext();
+    
+   
     const [index, setIndex] = useState(0);
     const [fadePopular, setFadePopular] = useState(false);
     const [fadeTopRated, setFadeTopRated] = useState(false);
@@ -30,73 +26,9 @@ export default function Movies() {
     const totalMovies = movies.popularMovies.results?.length || 0;
     const totalPages = Math.ceil(totalMovies / 5);
     
-    useEffect(() => {
-      if (movies.popularMovies.results) {
-        const visiblePopular = movies.popularMovies.results.slice(pageIndexPopular * 5, pageIndexPopular * 5 + 5);
-        setVisibleMovies( prev => ({
-          ...prev,
-          visiblePopularMovies: visiblePopular
-        })
-        );
-      }
-    }, [movies.popularMovies.results, pageIndexPopular]);
+    
 
-
-    useEffect(() => {
-      if(movies.topRatedMovies.results) {
-        const visibleTopRated = movies.topRatedMovies.results.slice(pageIndexTopRated * 5, pageIndexTopRated * 5 +5);
-        setVisibleMovies( prev => ({
-          ...prev,
-          visibleTopRatedMovies: visibleTopRated
-        }))
-      }
-    },[movies.topRatedMovies.results, pageIndexTopRated])
-
-    useEffect(() => {
-      if(movies.upcomingMovies.results) {
-        const visibleUpcoming = movies.upcomingMovies.results.slice(pageUpcomingIndex * 5, pageUpcomingIndex * 5 +5);
-        setVisibleMovies( prev => ({
-          ...prev,
-          visibleUpcomingMovies: visibleUpcoming
-        }))
-      }
-    },[movies.upcomingMovies.results, pageUpcomingIndex])
-
-    useEffect(() =>{
-      getPopularMovies()
-      .then(popularMoviesData => {
-        setMovies(previous => {
-          return {
-            ...previous,
-            popularMovies: popularMoviesData
-          }
-        });
-      })
-    },[]);
-
-    useEffect(() => {
-      getTopRatedMovies()
-      .then(topRatedMovies => {
-        setMovies(previous => {
-          return {
-            ...previous,
-            topRatedMovies: topRatedMovies
-          }
-        })
-      })
-    },[])
-
-    useEffect(() => {
-      getUpcomingMovies()
-      .then(upcomingMovies => {
-        setMovies(previous => {
-          return {
-            ...previous,
-            upcomingMovies: upcomingMovies
-          }
-        })
-      })
-    },[])
+    
 
     useEffect(() => {
       const timer = setInterval(() => {
