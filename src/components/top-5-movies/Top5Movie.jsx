@@ -1,7 +1,7 @@
 export default function Top5Movie({ movieData }) {
   const releaseDate = movieData.release_date;
   const year = new Date(releaseDate).getFullYear();
-  const vote = Math.floor(movieData.vote_average);
+  const vote = movieData.vote_average;
   return (
     <div className='top-5' 
     style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${movieData?.backdrop_path})`}}>
@@ -12,7 +12,7 @@ export default function Top5Movie({ movieData }) {
         </div>
 
         <div className="rating">
-        ⭐ {vote} 
+        ⭐ {vote.toFixed(1)} 
         </div>
 
 
