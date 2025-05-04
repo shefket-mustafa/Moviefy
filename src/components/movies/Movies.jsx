@@ -26,10 +26,6 @@ export default function Movies() {
     const totalMovies = movies.popularMovies.results?.length || 0;
     const totalPages = Math.ceil(totalMovies / 5);
     
-    
-
-    
-
     useEffect(() => {
       const timer = setInterval(() => {
         setIndex(prev => {
