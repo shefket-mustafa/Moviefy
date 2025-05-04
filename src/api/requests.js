@@ -72,3 +72,26 @@ export const useTopRatedMovies = () => {
     return {getTopRatedMovies}
 }
 
+export const useUpcomingMovies = () => {
+
+    const getUpcomingMovies = async () => {
+
+        try{
+            
+            const response = await fetch(baseUrl + `upcoming?api_key=b4a2347f7dacd3d039a3465b4a2ccc4a`)
+
+            if(!response.ok){
+                throw new Error('Failed to fetch upcoming movies');
+            }
+
+            const data = await response.json();
+            return data;
+        }catch(err){
+            console.log(err.message);
+            return[]
+        }
+
+    }
+    return {getUpcomingMovies};
+};
+

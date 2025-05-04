@@ -1,24 +1,31 @@
 import './movies.css'
 import { useEffect, useState } from 'react';
-import { useGetMovies, useTopRatedMovies } from '../../api/requests';
+import { useGetMovies, useTopRatedMovies, useUpcomingMovies } from '../../api/requests';
 import Top5Movie from '../top-5-movies/Top5Movie';
 
 export default function Movies() {
 
     const {getPopularMovies} = useGetMovies();
     const {getTopRatedMovies} = useTopRatedMovies()
+    const {getUpcomingMovies} = useUpcomingMovies();
 
     const [movies, setMovies] = useState({
       popularMovies: [],
-      topRatedMovies: []
+      topRatedMovies: [],
+      upcomingMovies: []
     });
     const [pageIndexPopular, setPageIndexPopular] = useState(0);
     const [pageIndexTopRated, setPageIndexTopRated] = useState(0);
+    const [pageUpcomingIndex, setPageUpcomingIndex] = useState(0);
     const [visibleMovies, setVisibleMovies] = useState({
       visiblePopularMovies: [],
-      visibleTopRatedMovies: []
+      visibleTopRatedMovies: [],
+      visibleUpcomingMovies: []
     });
     const [index, setIndex] = useState(0);
+    const [fadePopular, setFadePopular] = useState(false);
+    const [fadeTopRated, setFadeTopRated] = useState(false);
+    const [fadeUpcoming, setUpcoming] = useState(false);
 
     const totalMovies = movies.popularMovies.results?.length || 0;
     const totalPages = Math.ceil(totalMovies / 5);
@@ -45,6 +52,16 @@ export default function Movies() {
       }
     },[movies.topRatedMovies.results, pageIndexTopRated])
 
+    useEffect(() => {
+      if(movies.upcomingMovies.results) {
+        const visibleUpcoming = movies.upcomingMovies.results.slice(pageUpcomingIndex * 5, pageUpcomingIndex * 5 +5);
+        setVisibleMovies( prev => ({
+          ...prev,
+          visibleUpcomingMovies: visibleUpcoming
+        }))
+      }
+    },[movies.upcomingMovies.results, pageUpcomingIndex])
+
     useEffect(() =>{
       getPopularMovies()
       .then(popularMoviesData => {
@@ -70,6 +87,18 @@ export default function Movies() {
     },[])
 
     useEffect(() => {
+      getUpcomingMovies()
+      .then(upcomingMovies => {
+        setMovies(previous => {
+          return {
+            ...previous,
+            upcomingMovies: upcomingMovies
+          }
+        })
+      })
+    },[])
+
+    useEffect(() => {
       const timer = setInterval(() => {
         setIndex(prev => {
           const isLastMovie = movies.popularMovies.results && prev >= movies.popularMovies.results.length-1;
@@ -81,6 +110,24 @@ export default function Movies() {
     },[index, movies.popularMovies.results]);
 
     const currentMovie = movies.popularMovies.results?.[index];
+
+    useEffect(() => {
+      setFadePopular(true);
+      const timeout = setTimeout(() => setFadePopular(false), 400);
+      return () => clearTimeout(timeout)
+    },[pageIndexPopular]);
+
+    useEffect(() => {
+      setFadeTopRated(true);
+      const timeout = setTimeout(() => setFadeTopRated(false), 400);
+      return () => clearTimeout(timeout)
+    },[ pageIndexTopRated]);
+
+    useEffect(() => {
+      setUpcoming(true);
+      const timeout = setTimeout(() => setUpcoming(false), 400);
+      return () => clearTimeout(timeout)
+    },[ pageUpcomingIndex])
     
 
   return (
@@ -114,7 +161,7 @@ export default function Movies() {
   </button>
 </div>
      
-  <div className={`week-5 ${pageIndexPopular}-page fade-in`}>
+<div className={`week-5 ${fadePopular ? 'fade-in' : ''}`}>
 
       {visibleMovies.visiblePopularMovies.map(movie => <Top5Movie key={movie.id} movieData={movie}/>)}
       
@@ -137,9 +184,32 @@ export default function Movies() {
   </button>
 </div>
      
-  <div className={`week-5 ${pageIndexTopRated}-page fade-in`}>
+<div className={`week-5 ${fadeTopRated ? 'fade-in' : ''}`}>
 
       {visibleMovies.visibleTopRatedMovies.map(movie => <Top5Movie key={movie.id} movieData={movie}/>)}
+      
+
+      </div>
+
+     </div>
+
+     <div className='upcoming-container'>
+      
+     <div className='top-bar'>
+  <button className='pagination-btn' disabled={pageUpcomingIndex === 0} onClick={() => setPageUpcomingIndex(i => Math.max(i - 1, 0))}>
+    ◀
+  </button>
+
+  <p className='top-text'>🔥 Upcoming movies</p>
+
+  <button className='pagination-btn' disabled={pageUpcomingIndex >= totalPages - 1} onClick={() => setPageUpcomingIndex(i => i + 1)}>
+    ▶
+  </button>
+</div>
+     
+<div className={`week-5 ${fadeUpcoming ? 'fade-in' : ''}`}>
+
+      {visibleMovies.visibleUpcomingMovies.map(movie => <Top5Movie key={movie.id} movieData={movie}/>)}
       
 
       </div>

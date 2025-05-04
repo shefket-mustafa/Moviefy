@@ -1,19 +1,19 @@
     .movies-container{
-        background-color: rgb(36, 35, 35);
+        background-color: rgb(23, 23, 23);
         min-height: 700vh;
         color:white;
         display: flex;
         flex-direction: column;
     }
 
-    .this-weeks-container{
+    .this-weeks-container, .upcoming-container{
         display: flex;
         flex-direction: column;
         align-items: center;
-        min-height: 400px;
+        min-height: 300px;
     }
 
-    .top-5{
+    .top-5 {
         position: relative;
     width: 250px;
   height: 200px; 
@@ -103,8 +103,8 @@
         width: 90%;
       }
       .pagination-btn:disabled{
-        color: rgb(36, 35, 35);
-        background: rgb(36, 35, 35);
+        color: rgb(23, 23, 23);
+        background: rgb(23, 23, 23);
         cursor: default;
 
       }
@@ -204,8 +204,24 @@
       display: flex;
         flex-direction: column;
         align-items: center;
-        min-height: 400px;
+        min-height: 300px;
      }
+
+     .fade-in {
+      animation: fadeIn 0.4s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
 
       
 
