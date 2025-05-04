@@ -49,9 +49,9 @@ export const useGetMovies = () => {
 
 
 
-export const useGetWeeklyMovies = () => {
+export const useTopRatedMovies = () => {
 
-    const getWeeklyMovies = async () => {
+    const getTopRatedMovies = async () => {
 
         try{
             const response = await fetch(baseUrl + `top_rated?api_key=b4a2347f7dacd3d039a3465b4a2ccc4a`);
@@ -69,6 +69,6 @@ export const useGetWeeklyMovies = () => {
         }
     }
 
-    return {getWeeklyMovies}
+    return {getTopRatedMovies}
 }
 
