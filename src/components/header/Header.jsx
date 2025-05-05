@@ -14,7 +14,6 @@ export default function Header() {
         <div className='nav'>
         <NavLink to={'/'}>Home</NavLink>
         <NavLink to={'/movies'}>Movies</NavLink>
-        <NavLink to={'/about'}>About us</NavLink>
         <NavLink to={'/contact'}>Contact us</NavLink>
 
         </div>
