@@ -1,6 +1,6 @@
     .movies-container{
         background-color: rgb(23, 23, 23);
-        min-height: 700vh;
+        min-height: 200vh;
         color:white;
         display: flex;
         flex-direction: column;
