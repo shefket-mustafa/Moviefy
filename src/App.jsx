@@ -7,6 +7,7 @@ import About from "./components/about/About"
 import Header from "./components/header/Header"
 import Footer from "./components/footer/Footer"
 import MovieDetails from "./components/movie-details/MovieDetails"
+import ScrollComponent from "./components/util-components/ScrollComponent"
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
   return (
     <>
       <Header />
+      <ScrollComponent />
     <Routes>
 
     <Route path='/' element={<Home/>}/>
