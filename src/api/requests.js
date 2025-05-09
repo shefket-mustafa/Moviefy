@@ -1,4 +1,4 @@
-// myAPI b4a2347f7dacd3d039a3465b4a2ccc4a
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 // https://api.themoviedb.org/3/search/movie?query=Gladiator&api_key=YOUR_API_KEY
 // Returns:
@@ -31,7 +31,7 @@ export const useGetMovies = () => {
     const getPopularMovies = async () => {
 
         try{
-            const response = await fetch(baseUrl + `popular?api_key=b4a2347f7dacd3d039a3465b4a2ccc4a`);
+            const response = await fetch(baseUrl + `popular?api_key=`+API_KEY);
 
             if(!response.ok){
                 throw new Error('Failed to fetch movies');
@@ -54,7 +54,7 @@ export const useTopRatedMovies = () => {
     const getTopRatedMovies = async () => {
 
         try{
-            const response = await fetch(baseUrl + `top_rated?api_key=b4a2347f7dacd3d039a3465b4a2ccc4a`);
+            const response = await fetch(baseUrl + `top_rated?api_key=`+ API_KEY);
 
             if(!response.ok){
                 throw new Error('Failed to fetch popular movies');
@@ -78,7 +78,7 @@ export const useUpcomingMovies = () => {
 
         try{
             
-            const response = await fetch(baseUrl + `upcoming?api_key=b4a2347f7dacd3d039a3465b4a2ccc4a`)
+            const response = await fetch(baseUrl + `upcoming?api_key=`+ API_KEY)
 
             if(!response.ok){
                 throw new Error('Failed to fetch upcoming movies');
@@ -93,5 +93,25 @@ export const useUpcomingMovies = () => {
 
     }
     return {getUpcomingMovies};
+};
+
+export const useMovieDetails = () => {
+
+    const getMovieDetails = async (movieID) => {
+
+        try{
+            const response = await fetch(baseUrl + movieID+`?api_key=`+API_KEY);
+
+            if(!response.ok){
+                throw new Error('Failed to fetch movie details!')
+            }
+            return await response.json();
+
+        }catch(err){
+            console.log(err.message);
+            return [];
+        };
+    };
+    return {getMovieDetails};
 };
 
