@@ -1,6 +1,6 @@
 import {  useEffect, useState } from "react";
 import { useGetMovies, useTopRatedMovies, useUpcomingMovies } from "../../../api/requests";
-import {MovieContext} from '../movie-context/movieContext.js'
+import {MovieContext} from '../movie-context/movieContext'
 
 export const MovieProvider = ({ children }) => {
 
@@ -8,6 +8,9 @@ export const MovieProvider = ({ children }) => {
     const {getTopRatedMovies} = useTopRatedMovies()
     const {getUpcomingMovies} = useUpcomingMovies();
 
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [searchResults, setSearchResults] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
     const [pageIndexPopular, setPageIndexPopular] = useState(0);
     const [pageIndexTopRated, setPageIndexTopRated] = useState(0);
     const [pageUpcomingIndex, setPageUpcomingIndex] = useState(0);
@@ -103,7 +106,13 @@ export const MovieProvider = ({ children }) => {
           setPageIndexPopular,
           setPageIndexTopRated,
           setPageUpcomingIndex,
-          visibleMovies
+          visibleMovies,
+          isSearchOpen,
+          setIsSearchOpen,
+          searchResults,
+          setSearchResults,
+          searchTerm, 
+          setSearchTerm
           
           }}>
             {children}
