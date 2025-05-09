@@ -23,7 +23,7 @@ export default function MovieDetails() {
 
   return (
 
-    
+    <div className='details-bg'>
 
     <div className="details-container">
       <div className="details-left">
@@ -42,6 +42,7 @@ export default function MovieDetails() {
         <p><strong>Genres:</strong> {currentMovie.genres?.map(g => g.name).join(', ')}</p>
         <p className="overview">{currentMovie.overview}</p>
       </div>
+    </div>
     </div>
 
     
