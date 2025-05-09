@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
 import { useDetailsContext } from '../util-hooks/useDetailsContext';
-import './MovieDetails.css';
+import './movieDetails.css';
 import { useMovieDetails } from '../../api/requests';
 import { useEffect, useState } from 'react';
 
