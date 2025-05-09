@@ -2,12 +2,12 @@ import './movies.css'
 import { useEffect, useState } from 'react';
 import Top5Movie from '../top-5-movies/Top5Movie';
 import { useMovieContext } from '../util-hooks/useMovieContext';
+import { useNavigate } from 'react-router';
 
 export default function Movies() {
 
   const {
       movies,
-      setMovies,
       pageIndexPopular,
       pageIndexTopRated,
       pageUpcomingIndex,
@@ -22,6 +22,8 @@ export default function Movies() {
     const [fadePopular, setFadePopular] = useState(false);
     const [fadeTopRated, setFadeTopRated] = useState(false);
     const [fadeUpcoming, setUpcoming] = useState(false);
+    const navigate = useNavigate();
+
 
     const totalMovies = movies.popularMovies.results?.length || 0;
     const totalPages = Math.ceil(totalMovies / 5);
@@ -57,6 +59,7 @@ export default function Movies() {
       return () => clearTimeout(timeout)
     },[ pageUpcomingIndex])
     
+    
 
   return (
     <div className='movies-container'>
@@ -70,8 +73,7 @@ export default function Movies() {
         </div>
 
         <div className='top-btns'>
-          <button>Play</button>
-          <button>Details</button>
+          <button onClick={() => navigate(`/movies/${currentMovie.id}/details`)}>Details</button>
         </div>
         </div>
       </div>
@@ -137,9 +139,10 @@ export default function Movies() {
      
 <div className={`week-5 ${fadeUpcoming ? 'fade-in' : ''}`}>
 
-      {visibleMovies.visibleUpcomingMovies.map(movie => <Top5Movie key={movie.id} movieData={movie}/>)}
-      
-
+      {visibleMovies.visibleUpcomingMovies.map(movie => 
+      <Top5Movie 
+      key={movie.id} 
+      movieData={movie}/>)}
       </div>
 
      </div>
