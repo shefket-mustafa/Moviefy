@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Top5Movie from '../top-5-movies/Top5Movie';
 import { useMovieContext } from '../util-hooks/useMovieContext';
 import { useNavigate } from 'react-router';
+import { useSearchMovieByTitle } from '../../api/requests';
 
 export default function Movies() {
 
@@ -14,15 +15,22 @@ export default function Movies() {
       setPageIndexPopular,
       setPageIndexTopRated,
       setPageUpcomingIndex,
-      visibleMovies
+      visibleMovies,
+      isSearchOpen,
+      setIsSearchOpen,
+      searchResults,
+      setSearchResults,
+      searchTerm,
+      setSearchTerm
     } = useMovieContext();
     
    
     const [index, setIndex] = useState(0);
     const [fadePopular, setFadePopular] = useState(false);
     const [fadeTopRated, setFadeTopRated] = useState(false);
-    const [fadeUpcoming, setUpcoming] = useState(false);
+    const [fadeUpcoming, setUpcoming] = useState(false); 
     const navigate = useNavigate();
+    const {getSearchByTitle} = useSearchMovieByTitle();
 
 
     const totalMovies = movies.popularMovies.results?.length || 0;
@@ -58,6 +66,18 @@ export default function Movies() {
       const timeout = setTimeout(() => setUpcoming(false), 400);
       return () => clearTimeout(timeout)
     },[ pageUpcomingIndex])
+
+    useEffect(() => {
+      if (!searchTerm) return;
+      getSearchByTitle(searchTerm)
+      .then(movies => {
+        setSearchResults(movies.results)
+      })
+    },[setSearchResults,searchTerm]);
+
+    const searchMovieDetailsHandler = (movieId) => {
+      navigate(`/movies/${movieId}/details`)
+    }
     
     
 
@@ -77,6 +97,7 @@ export default function Movies() {
         </div>
         </div>
       </div>
+
      <div className='this-weeks-container'>
       
      <div className='top-bar'>
@@ -136,6 +157,26 @@ export default function Movies() {
     ▶
   </button>
 </div>
+
+{isSearchOpen && (
+  <div className="search-modal">
+    <button className="close-btn" onClick={() => setIsSearchOpen(false)}>x</button>
+    <h2>Results for "{searchTerm}"</h2>
+
+    {searchResults.length > 0 ? (
+      <div className="search-grid">
+        {searchResults.map(movie => (
+          <div onClick={() => searchMovieDetailsHandler(movie.id)} key={movie.id} className="search-card">
+            <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} />
+            <p>{movie.title}</p>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <p>No results found.</p>
+    )}
+  </div>
+)}
      
 <div className={`week-5 ${fadeUpcoming ? 'fade-in' : ''}`}>
 
