@@ -115,3 +115,25 @@ export const useMovieDetails = () => {
     return {getMovieDetails};
 };
 
+export const useSearchMovieByTitle = () => {
+
+    const getSearchByTitle = async (movieTitle) => {
+
+        try{
+            const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=`+movieTitle+`&api_key=`+API_KEY);
+
+            if(!response.ok){
+                throw new Error('Failed to fetch searched movies!')
+            }
+            return await response.json();
+
+        }catch(err){
+            console.log(err.message);
+            return [];
+        };
+    };
+    return {getSearchByTitle};
+};
+
+
+
