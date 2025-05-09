@@ -13,12 +13,16 @@ import { faInstagram, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-
                 <Link to={'/contact'}>Contact us</Link>
             </div>
 
-            <div className='Reach us'><strong>Reach us</strong>
+            <div className='reach-us'><strong>Reach us</strong>
                 <p><strong style={{color: 'black'}}>Email</strong>: shefket.must@gmail.com</p>
                 <p><strong style={{color: 'black'}}>Adress</strong>: Burgas</p>
             </div>
 
-            <div className='social'><strong>Social</strong>
+            <div className='social'>
+              
+              <p style={{color: 'black'}}><strong>Social</strong></p>
+
+            <div className='emotes'>
             <a href='https://www.instagram.com/shefket_sum/' target='_blank' rel='noreferrer'>
             <FontAwesomeIcon icon={faInstagram} /> 
           </a>
@@ -28,6 +32,7 @@ import { faInstagram, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-
           <a href='https://github.com/shefket-mustafa' target='_blank' rel='noreferrer'>
             <FontAwesomeIcon icon={faGithub} /> 
           </a>
+          </div>
             </div>
         </div>
         <div className='bot-text'>All rights reserved 2025</div>

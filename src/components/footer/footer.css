@@ -4,12 +4,14 @@ p{
 }
 
 .footer-container{
-    height: 140px;
+    
     background-color: rgb(0, 115, 128);
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding-top: 40px;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    flex-wrap: wrap;
 }
 .footer-container div{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -29,11 +31,11 @@ p{
     transition: ease 0.3s;
 }
 .social{
-    margin-right: 100px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  flex-direction: column;
+  align-items: flex-start; 
+  justify-content: start;
+  margin-right: 100px;
     
 }
 .social a{
@@ -46,6 +48,9 @@ p{
     color: black;
     transform: scale(1.2);
 }
+.social p {
+    margin: 0;
+}
 
 .bot-text{
     display: flex;
@@ -56,3 +61,8 @@ p{
     padding: 5px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+.emotes {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
