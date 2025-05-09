@@ -46,3 +46,22 @@
     max-height: 50px;
     margin-left: 20px;
 }
+
+.search input{
+    min-width: 300px;
+    font-family: sans-serif;
+    min-height: 20px;
+}
+.search button{
+    background-color: black;
+    color: white;
+    transition: ease 0.2s;
+    border-radius: 2px;
+    font-family: sans-serif;
+    min-height: 23px;
+}
+.search button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: rgb(37, 37, 37);
+}
