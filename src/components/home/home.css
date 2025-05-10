@@ -143,8 +143,53 @@
     align-items: flex-start;
     padding-top: 15px;
     padding-left: 20px;
-    
-    
   }
- 
+
+  @media screen and (max-width: 768px) {
+    
+    .sub-container{
+      flex-direction: column;
+    padding: 1rem;
+    background: rgb(61, 57, 57);
+    }
+
+    .home-page-welcoming{
+      min-width: 100%;
+      text-align: center;
+      padding: 1rem;
+      font-size: 15px;
+    }
+
+    .welcoming-image {
+      width: 100%;
+      height: auto;
+      max-height: 250px;
+    }
+
+    .secondary-container-left,
+    .secondary-container-right {
+      max-width: 100%;
+      width: 100%;
+      padding: 1rem;
+    }
+
+    .lower-home {
+      flex-direction: column;
+    }
   
+    .topics {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .topics img {
+      width: 100%;
+      border-radius: 0 0 15px 15px;
+    }
+  
+    .topics-text {
+      padding: 1rem;
+      align-items: center;
+      text-align: center;
+    }
+  }

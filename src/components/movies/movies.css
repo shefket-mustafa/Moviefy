@@ -274,6 +274,86 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 768px) {
+  .movies-container {
+    padding: 1rem;
+    min-height: auto;
+  }
+
+  .top-banner {
+    height: auto;
+    padding: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .top-bar{
+    display: flex;
+  }
+
+  .top-text {
+    max-width: 100%;
+  }
+
+  .top-text h1 {
+    font-size: 2rem;
+  }
+
+  .top-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 1rem;
+  }
+
+  .top-btns button {
+    width: 100%;
+    padding: 10px;
+  }
+
+ .top-rated-top-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .week-5 {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .top-5 {
+    width: 90%;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .details {
+    max-width: 100%;
+    text-align: center;
+    align-items: center;
+  }
+
+  .rating {
+    align-self: center;
+  }
+
+  .pagination-btn {
+    font-size: 16px;
+    padding: 0.5rem 1rem;
+  }
+
+  .search-modal {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .search-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+
       
 
   
