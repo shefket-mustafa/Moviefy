@@ -48,7 +48,7 @@ export default function MovieDetails() {
       <div className="details-right">
         <div className='details-right-h-b'>
         <h1>{currentMovie.title}</h1>
-        <button onClick={backButtonHandler}>Back</button>
+        <button className="back-btn" onClick={backButtonHandler}>Back</button>
         </div>
         <p><strong>Release:</strong> {currentMovie.release_date}</p>
         <p><strong>Rating:</strong> ⭐ {currentMovie.vote_average?.toFixed(1)}</p>

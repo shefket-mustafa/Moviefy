@@ -40,6 +40,10 @@
     font-size: 1rem;
     line-height: 1.5;
     margin-top: 1rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
   }
   
   .loading {
@@ -70,4 +74,68 @@
     transform: scale(1.1);
   }
 
+  
+  @media screen and (max-width: 768px) {
+    .details-container {
+      flex-direction: column;
+      padding: 1rem;
+      gap: 1.5rem;
+    }
+  
+    .details-left .poster {
+      width: 100%;
+      
+      margin: 0 auto;
+    }
+  
+    .details-right {
+      width: 100%;
+      padding: 0 1rem;
+      gap: 0.5rem;
+    }
+  
+    .details-right h1 {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  
+    .details-right-h-b {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+    }
+    
+    .details-right-h-b h1 {
+      font-size: 1.6rem;
+    }
+    
+    .back-btn {
+      width: 100%;
+      max-width: 160px;
+      padding: 10px 20px;
+      font-size: 1rem;
+    }
+  
+    .overview {
+      font-size: 0.95rem;
+      text-align: center;
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-top: 1rem;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      max-width: 100%;
+      white-space: normal;
+    }
+
+    .details-right-h-b button {
+      align-self: center;
+      width: 100%;
+      max-width: 150px;
+      text-align: center;
+    }
+
+    
+  }
   

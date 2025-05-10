@@ -114,7 +114,6 @@
         height: 500px;
         background-size: cover;
         background-position: center;
-        
         position: relative;
         display: flex;
         justify-content: flex-end;
@@ -275,27 +274,42 @@
 }
 
 @media screen and (max-width: 768px) {
+
+  .top-container{
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
   .movies-container {
     padding: 1rem;
     min-height: auto;
   }
 
-  .top-banner {
-    height: auto;
-    padding: 3rem;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .top-bar{
-    display: flex;
-  }
-
   .top-text {
     max-width: 100%;
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   .top-text h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    word-break: break-word;
+    margin: 0;
+  }
+
+  .top-text p {
+    font-size: 0.95rem;
+    line-height: 1.4rem;
+    word-break: break-word;
+    margin: 0;
+  }
+
+  .top-banner {
+    padding: 1.5rem;
+    box-sizing: border-box;
   }
 
   .top-btns {
