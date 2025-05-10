@@ -79,6 +79,11 @@ export default function Movies() {
       navigate(`/movies/${movieId}/details`)
     }
     
+    const closeModalHandler = () => {
+      setIsSearchOpen(false);
+      setSearchTerm('');
+      setSearchResults([]);
+    }
     
 
   return (
@@ -160,7 +165,7 @@ export default function Movies() {
 
 {isSearchOpen && (
   <div className="search-modal">
-    <button className="close-btn" onClick={() => setIsSearchOpen(false)}>x</button>
+    <button className="close-btn" onClick={closeModalHandler}>x</button>
     <h2>Results for "{searchTerm}"</h2>
 
     {searchResults.length > 0 ? (
