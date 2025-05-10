@@ -146,6 +146,18 @@
   }
 
   @media screen and (max-width: 768px) {
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .home-page-container{
+      min-width: 220px;
+    }
     
     .sub-container{
       flex-direction: column;
