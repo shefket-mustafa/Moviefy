@@ -1,4 +1,4 @@
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { useDetailsContext } from '../util-hooks/useDetailsContext';
 import './movieDetails.css';
 import { useMovieDetails } from '../../api/requests';
@@ -8,7 +8,10 @@ export default function MovieDetails() {
 
     const {currentMovieDetails, detailsMovieHandler} = useDetailsContext();
     const {getMovieDetails} = useMovieDetails();
+
     const [currentMovie, setCurrentMovie] = useState({});
+    const navigate = useNavigate();
+
     const movieId = useParams();
     const id = movieId.id;
     
@@ -19,6 +22,14 @@ export default function MovieDetails() {
             console.log(movie);
         })
     },[id])
+
+    const backButtonHandler = () => {
+      if(window.history.length > 1){
+        navigate(-1)
+      } else {
+        navigate('/movies')
+      }
+    }
 
 
   return (
@@ -35,7 +46,10 @@ export default function MovieDetails() {
       </div>
 
       <div className="details-right">
+        <div className='details-right-h-b'>
         <h1>{currentMovie.title}</h1>
+        <button onClick={backButtonHandler}>Back</button>
+        </div>
         <p><strong>Release:</strong> {currentMovie.release_date}</p>
         <p><strong>Rating:</strong> ⭐ {currentMovie.vote_average?.toFixed(1)}</p>
         <p><strong>Runtime:</strong> {currentMovie.runtime} min</p>
