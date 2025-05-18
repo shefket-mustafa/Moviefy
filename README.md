@@ -22,7 +22,7 @@
 
 ## 🌐 Live Demo
 
-Check out Moviefy live here: https://moviefy-lemon.vercel.app/movies
+Check out Moviefy live here: https://moviefy-lemon.vercel.app
 
 ## ⚙️ Setup & Installation
 
