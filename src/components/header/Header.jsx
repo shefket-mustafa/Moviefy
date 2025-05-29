@@ -19,7 +19,7 @@ export default function Header() {
       <div className='header'>
 
         <div className='icon'><img src={icon} alt="Loading.." />
-            <p className='header-text'>Moviefy</p>.sear
+            <p className='header-text'>Moviefy</p>
         </div>
 
         {pathname === '/movies' && <div className='search'>
