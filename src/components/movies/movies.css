@@ -1,6 +1,6 @@
     .movies-container{
         background-color: rgb(23, 23, 23);
-        min-height: 200vh;
+        min-height: 150vh;
         color:white;
         display: flex;
         flex-direction: column;
@@ -147,6 +147,7 @@
 
       .top-btns button{
         margin-right: 10px;
+        margin-top: 15px;
         padding: 10px 20px;
         background-color: rgba(0, 115, 128, 0.9);
         border: none;

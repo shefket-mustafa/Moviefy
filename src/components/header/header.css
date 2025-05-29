@@ -52,18 +52,22 @@
     font-family: sans-serif;
     min-height: 20px;
 }
+.search input:focus{
+outline: none;
+}
+
 .search button{
     background-color: black;
     color: white;
     transition: ease 0.2s;
     border-radius: 2px;
     font-family: sans-serif;
-    min-height: 23px;
+    min-height: 21px;
 }
 .search button:hover{
     cursor: pointer;
-    transform: scale(1.1);
-    background-color: rgb(37, 37, 37);
+    background-color: rgb(40, 40, 40);
+    
 }
 
 @media screen and (max-width: 768px) {
@@ -107,17 +111,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 5px;
+        gap: 50px;
         width: 100%;
       }
-      .search input {
-        width: 90%;
-        min-width: unset;
-        max-width: 300px;
-      }
-    
-      .search button {
-        width: 90%;
-        max-width: 150px;
-      }
+     
 }
