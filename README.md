@@ -18,7 +18,12 @@
 - **TMDb API** for movie data  
 - **CSS** with custom animations  
 - **React Hooks** (`useEffect`, `useState`, custom context)  
-- **Modular Component Architecture**  
+- **Modular Component Architecture**
+
+
+## 📱 Responsive Design
+
+Moviefy is fully responsive and mobile-friendly. Whether you're browsing from your phone, tablet, or desktop, the layout adjusts seamlessly to fit your screen.
 
 ## 🌐 Live Demo
 
@@ -47,12 +52,7 @@ Check out Moviefy live here: https://moviefy-lemon.vercel.app
    npm run dev
    ```
 
-## 📝 TODO (In Progress)
-
-- [ ] Movie detail pages  
-- [ ] Search functionality  
-- [ ] Dark mode toggle  
-- [ ] Responsive improvements for mobile  
+## 📝 TODO (In Progress) 
 - [ ] Watchlist/favorites feature  
 
 ## 📄 License
