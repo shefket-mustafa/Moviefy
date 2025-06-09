@@ -55,7 +55,7 @@ export default function Contact() {
           <label htmlFor="message">Message:</label>
           <textarea name="message" id="message" required></textarea>
 
-          <button type="submit" style={{marginTop:'5px'}}>Send</button>
+          <button type="submit" style={{marginTop:'20px'}}>Send</button>
         </form>
       </div>
       </div>
