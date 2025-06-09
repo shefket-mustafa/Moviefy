@@ -1,7 +1,31 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import "./contact.css";
+import { useRef } from "react";
+import emailJs from '@emailjs/browser';
 
 export default function Contact() {
+
+  const formRef = useRef();
+  const navigate = useNavigate();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailJs.sendForm(
+      'service_clwu9fj',
+      'template_9dzv7ec',
+      formRef.current,
+      'oRIvXdIHKSTXZth8s'
+    ).then(() => {
+      alert('Message sent!')
+      e.target.reset();
+      navigate('/')
+    }).catch((err) => {
+      console.error('EmailJS error')
+      alert("Failed to send message.");
+    })
+    
+  }
   return (
     <>
     <div className="contact-container">
@@ -18,17 +42,20 @@ export default function Contact() {
       </div>
 
       <div className="contact-form">
-        <form>
+        <form ref={formRef} onSubmit={sendEmail}> 
+        <label htmlFor="name">Subject:</label>
+          <input type="text" name="subject" required />
+
           <label htmlFor="name">Name:</label>
-          <input type="text" name="name" required />
+          <input type="text" name="from_name" required />
 
           <label htmlFor="email">Email:</label>
-          <input type="text" name="email" required />
+          <input type="text" name="from_email" required />
 
           <label htmlFor="message">Message:</label>
-          <textarea name="message" id="message"></textarea>
+          <textarea name="message" id="message" required></textarea>
 
-          <Link to='/' style={{marginTop:'5px'}}>Send</Link>
+          <button type="submit" style={{marginTop:'5px'}}>Send</button>
         </form>
       </div>
       </div>
