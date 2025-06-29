@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router";
-import { useDetailsContext } from "../util-hooks/useDetailsContext";
 
 export default function Top5Movie({ movieData }) {
 
