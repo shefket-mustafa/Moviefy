@@ -54,6 +54,7 @@ Check out Moviefy live here: https://moviefy-lemon.vercel.app
 
 ## 📝 TODO (In Progress) 
 - [ ] Watchlist/favorites feature  
+- [ ] Global state managment with Context API
 
 ## 📄 License
 
