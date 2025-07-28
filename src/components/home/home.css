@@ -32,6 +32,7 @@
     border-radius: 10px;
     text-decoration: none;
     color: white;
+    margin-top: 10%
 }
 
 .welcoming-image{
@@ -169,8 +170,10 @@
       min-width: 100%;
       text-align: center;
       padding: 1rem;
-      font-size: 15px;
+      font-size: 15px
+      
     }
+    
 
     .welcoming-image {
       width: 100%;
